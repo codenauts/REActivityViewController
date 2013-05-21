@@ -47,11 +47,17 @@ static REActivityDelegateObject *_sharedObject = nil;
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
     [self.controller dismissViewControllerAnimated:YES completion:nil];
+  if (self.completionHandler) {
+    self.completionHandler(self.activityType, (result == MessageComposeResultSent));
+  }
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [self.controller dismissViewControllerAnimated:YES completion:nil];
+  if (self.completionHandler) {
+    self.completionHandler(self.activityType, (result == MFMailComposeResultSent));
+  }
 }
 
 @end

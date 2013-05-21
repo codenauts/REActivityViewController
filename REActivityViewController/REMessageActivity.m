@@ -49,6 +49,9 @@
             
             MFMessageComposeViewController *messageComposeViewController = [[MFMessageComposeViewController alloc] init];
             [REActivityDelegateObject sharedObject].controller = activityViewController.presentingController;
+            [REActivityDelegateObject sharedObject].completionHandler = activityViewController.completionHandler;
+            [REActivityDelegateObject sharedObject].activityType = NSStringFromClass([REMessageActivity class]);
+
             messageComposeViewController.messageComposeDelegate = [REActivityDelegateObject sharedObject];
             
             if (text && !url)

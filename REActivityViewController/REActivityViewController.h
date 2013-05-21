@@ -38,6 +38,8 @@
 @property (weak, nonatomic) UIViewController *presentingController;
 @property (weak, nonatomic) UIViewController *rootViewController;
 
+@property(nonatomic,copy) UIActivityViewControllerCompletionHandler completionHandler;
+
 - (id)initWithViewController:(UIViewController *)viewController activities:(NSArray *)activities;
 - (void)presentFromRootViewController;
 - (void)presentFromViewController:(UIViewController *)controller;

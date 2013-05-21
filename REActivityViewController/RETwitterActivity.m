@@ -45,6 +45,13 @@
         
         [activityViewController dismissViewControllerAnimated:YES completion:^{
             TWTweetComposeViewController *composeController = [[TWTweetComposeViewController alloc] init];
+          
+          if (activityViewController.completionHandler) {
+            composeController.completionHandler =  ^(TWTweetComposeViewControllerResult result) {
+              activityViewController.completionHandler(NSStringFromClass([RETwitterActivity class]), (result == TWTweetComposeViewControllerResultCancelled));
+            };
+          }
+          
             NSString *text = [userInfo objectForKey:@"text"];
             UIImage *image = [userInfo objectForKey:@"image"];
             NSURL *url = [userInfo objectForKey:@"url"];

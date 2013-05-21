@@ -45,16 +45,24 @@
             [weakSelf shareFromViewController:presenter
                                      text:[userInfo objectForKey:@"text"]
                                       url:[userInfo objectForKey:@"url"]
-                                    image:[userInfo objectForKey:@"image"]];
+                                    image:[userInfo objectForKey:@"image"]
+                        completionHandler:activityViewController.completionHandler];
         }];
     };
     
     return self;
 }
 
-- (void)shareFromViewController:(UIViewController *)viewController text:(NSString *)text url:(NSURL *)url image:(UIImage *)image
+- (void)shareFromViewController:(UIViewController *)viewController text:(NSString *)text url:(NSURL *)url image:(UIImage *)image completionHandler:(UIActivityViewControllerCompletionHandler)completionHandler
 {
     DEFacebookComposeViewController *facebookViewComposer = [[DEFacebookComposeViewController alloc] init];
+  
+  if (completionHandler) {
+    facebookViewComposer.completionHandler = ^(DEFacebookComposeViewControllerResult result) {
+      completionHandler(NSStringFromClass([RETwitterActivity class]), (result == DEFacebookComposeViewControllerResultDone));
+    };
+  }
+  
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
         viewController.modalPresentationStyle = UIModalPresentationCurrentContext;
     else

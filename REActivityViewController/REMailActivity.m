@@ -51,6 +51,9 @@
             MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
 			if (mailComposeViewController) {
 				[REActivityDelegateObject sharedObject].controller = activityViewController.presentingController;
+        [REActivityDelegateObject sharedObject].completionHandler = activityViewController.completionHandler;
+        [REActivityDelegateObject sharedObject].activityType = NSStringFromClass([REMailActivity class]);
+        
 				mailComposeViewController.mailComposeDelegate = [REActivityDelegateObject sharedObject];
 				
 				if (text && !url)
