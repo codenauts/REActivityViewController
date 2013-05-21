@@ -48,7 +48,7 @@
           
           if (activityViewController.completionHandler) {
             composeController.completionHandler =  ^(TWTweetComposeViewControllerResult result) {
-              activityViewController.completionHandler(NSStringFromClass([RETwitterActivity class]), (result == TWTweetComposeViewControllerResultCancelled));
+              activityViewController.completionHandler(NSStringFromClass([RETwitterActivity class]), (result == TWTweetComposeViewControllerResultDone));
             };
           }
           
