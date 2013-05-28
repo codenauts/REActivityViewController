@@ -60,7 +60,7 @@
   if (completionHandler) {
     facebookViewComposer.completionHandler = ^(DEFacebookComposeViewControllerResult result) {
       [viewController dismissModalViewControllerAnimated:YES];
-      completionHandler(NSStringFromClass([RETwitterActivity class]), (result == DEFacebookComposeViewControllerResultDone));
+      completionHandler(NSStringFromClass([REFacebookActivity class]), (result == DEFacebookComposeViewControllerResultDone));
     };
   }
   
