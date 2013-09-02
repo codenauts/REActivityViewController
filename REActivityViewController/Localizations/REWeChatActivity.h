@@ -1,8 +1,8 @@
 //
-// REActivityView.h
+// REWeChatActivity.h
 // REActivityViewController
 //
-// Copyright (c) 2013 Roman Efimov (https://github.com/romaonthego)
+// Copyright (c) 2013 Jason Hao (https://github.com/hjue )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,22 +23,29 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
 #import "REActivity.h"
 
-// Check is iPhone5 screen
-#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
-@interface REActivityView : UIView <UIScrollViewDelegate> {
-    UIPageControl *_pageControl;
-}
+enum WXMessageType {
+    
+    WXMessageTypeText   = 0,
+    WXMessageTypeImage = 1,
+    WXMessageTypeNews = 2,
+    WXMessageTypeMusic = 3,
+    WXMessageTypeVideo = 4,
+    WXMessageTypeApp = 5,
+    WXMessageTypeEmoticon = 6
+    
+};
 
-@property (strong, nonatomic) UIImageView *backgroundImageView;
-@property (strong, nonatomic) UIScrollView *scrollView;
-@property (strong, nonatomic) NSArray *activities;
-@property (weak, nonatomic) REActivityViewController *activityViewController;
-@property (strong, nonatomic) UIButton *cancelButton;
+@interface REWeChatActivity : REActivity
 
-- (id)initWithFrame:(CGRect)frame activities:(NSArray *)activities;
+@property (copy, nonatomic) NSString *appId;
+
+@property (nonatomic, assign) int scene;
+
+@property (nonatomic,assign) int messageType;
+
+- (id)initWithAppId:(NSString *)appId messageType:(int)messageType scene:(int)scene;
 
 @end

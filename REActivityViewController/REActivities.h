@@ -30,6 +30,7 @@
 #import "REPrintActivity.h"
 #import "RECopyActivity.h"
 #import "RESafariActivity.h"
+#import "REChromeActivity.h"
 #import "REMapsActivity.h"
 #import "RESaveToCameraRollActivity.h"
 #import "RETumblrActivity.h"
@@ -39,3 +40,4 @@
 #import "REReadabilityActivity.h"
 #import "REDiigoActivity.h"
 #import "REKipptActivity.h"
+#import "RESinaWeiboActivity.h"

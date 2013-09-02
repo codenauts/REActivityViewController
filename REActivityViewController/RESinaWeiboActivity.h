@@ -1,8 +1,9 @@
 //
-// REActivityView.h
+// RESinaWeiboActivity.h
 // REActivityViewController
 //
-// Copyright (c) 2013 Roman Efimov (https://github.com/romaonthego)
+// Copyright (c) 2013 Jason Hao (https://github.com/hjue )
+// Copyright (c) 2013 Roman Efimov (https://github.com/romaonthego )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,22 +24,9 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
 #import "REActivity.h"
+#import <Social/Social.h>
 
-// Check is iPhone5 screen
-#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
-
-@interface REActivityView : UIView <UIScrollViewDelegate> {
-    UIPageControl *_pageControl;
-}
-
-@property (strong, nonatomic) UIImageView *backgroundImageView;
-@property (strong, nonatomic) UIScrollView *scrollView;
-@property (strong, nonatomic) NSArray *activities;
-@property (weak, nonatomic) REActivityViewController *activityViewController;
-@property (strong, nonatomic) UIButton *cancelButton;
-
-- (id)initWithFrame:(CGRect)frame activities:(NSArray *)activities;
+@interface RESinaWeiboActivity : REActivity
 
 @end
