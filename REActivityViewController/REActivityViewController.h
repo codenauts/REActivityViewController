@@ -24,6 +24,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "REActivityLocalization.h"
 #import "REActivityView.h"
 #import "REActivities.h"
 

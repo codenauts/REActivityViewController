@@ -34,7 +34,7 @@
 
 - (id)initWithConsumerKey:(NSString *)consumerKey consumerSecret:(NSString *)consumerSecret
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.Readability.title", @"REActivityViewController", @"Save to Readability")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Readability.title", @"REActivityViewController", @"Save to Readability")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Readability"]
                     actionBlock:nil];
     if (!self)
@@ -66,11 +66,11 @@
     [activityViewController dismissViewControllerAnimated:YES completion:^{
         REAuthViewController *controller = [[REAuthViewController alloc] initWithStyle:UITableViewStyleGrouped];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-        controller.title = NSLocalizedStringFromTable(@"activity.Readability.authentication.title", @"REActivityViewController", @"Readability");
+        controller.title = REActivityLocalizedStringFromTable(@"activity.Readability.authentication.title", @"REActivityViewController", @"Readability");
         controller.labels = @[
-                              NSLocalizedStringFromTable(@"field.username", @"REActivityViewController", @"Username"),
-                              NSLocalizedStringFromTable(@"field.password", @"REActivityViewController", @"Password"),
-                              NSLocalizedStringFromTable(@"slogan.never.store.password", @"REActivityViewController", @"We never store your password.")
+                              REActivityLocalizedStringFromTable(@"field.username", @"REActivityViewController", @"Username"),
+                              REActivityLocalizedStringFromTable(@"field.password", @"REActivityViewController", @"Password"),
+                              REActivityLocalizedStringFromTable(@"slogan.never.store.password", @"REActivityViewController", @"We never store your password.")
                               ];
         controller.onLoginButtonPressed = ^(REAuthViewController *controller, NSString *username, NSString *password) {
             [weakSelf authenticateWithUsername:username password:password success:^(AFXAuthClient *client) {
@@ -82,10 +82,10 @@
                 }];
             } failure:^(NSError *error) {
                 [controller showLoginButton];
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"activity.Readability.authentication.title", @"REActivityViewController", @"Readability")
-                                                                    message:NSLocalizedStringFromTable(@"activity.Readability.authentication.error", @"REActivityViewController", @"Please check your username and password. If you're sure they're correct, Readability may be temporarily experiencing problems. Please try again in a few minutes.")
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:REActivityLocalizedStringFromTable(@"activity.Readability.authentication.title", @"REActivityViewController", @"Readability")
+                                                                    message:REActivityLocalizedStringFromTable(@"activity.Readability.authentication.error", @"REActivityViewController", @"Please check your username and password. If you're sure they're correct, Readability may be temporarily experiencing problems. Please try again in a few minutes.")
                                                                    delegate:nil
-                                                          cancelButtonTitle:NSLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
+                                                          cancelButtonTitle:REActivityLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
                                                           otherButtonTitles:nil];
                 [alertView show];
             }];

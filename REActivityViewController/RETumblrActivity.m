@@ -34,7 +34,7 @@
 
 - (id)initWithConsumerKey:(NSString *)consumerKey consumerSecret:(NSString *)consumerSecret
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.Tumblr.title", @"REActivityViewController", @"Tumblr")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Tumblr.title", @"REActivityViewController", @"Tumblr")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Tumblr"]
                     actionBlock:nil];
     if (!self)
@@ -74,11 +74,11 @@
     [activityViewController dismissViewControllerAnimated:YES completion:^{
         REAuthViewController *controller = [[REAuthViewController alloc] initWithStyle:UITableViewStyleGrouped];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-        controller.title = NSLocalizedStringFromTable(@"activity.Tumblr.authentication.title", @"REActivityViewController", @"Tumblr");
+        controller.title = REActivityLocalizedStringFromTable(@"activity.Tumblr.authentication.title", @"REActivityViewController", @"Tumblr");
         controller.labels = @[
-                              NSLocalizedStringFromTable(@"field.email", @"REActivityViewController", @"Email"),
-                              NSLocalizedStringFromTable(@"field.password", @"REActivityViewController", @"Password"),
-                              NSLocalizedStringFromTable(@"slogan.password.storage.is.safe", @"REActivityViewController", @"We store your password in safe place.")
+                              REActivityLocalizedStringFromTable(@"field.email", @"REActivityViewController", @"Email"),
+                              REActivityLocalizedStringFromTable(@"field.password", @"REActivityViewController", @"Password"),
+                              REActivityLocalizedStringFromTable(@"slogan.password.storage.is.safe", @"REActivityViewController", @"We store your password in safe place.")
                               ];
         controller.onLoginButtonPressed = ^(REAuthViewController *controller, NSString *username, NSString *password) {            
             [weakSelf authenticateWithUsername:username password:password success:^(AFXAuthClient *client) {
@@ -112,10 +112,10 @@
 
 - (void)showAuthErrorAlert
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"activity.Tumblr.authentication.title", @"REActivityViewController", @"Tumblr")
-                                                        message:NSLocalizedStringFromTable(@"activity.Tumblr.authentication.error", @"REActivityViewController", @"Please check your e-mail and password. If you're sure they're correct, Tumblr may be temporarily experiencing problems. Please try again in a few minutes.")
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:REActivityLocalizedStringFromTable(@"activity.Tumblr.authentication.title", @"REActivityViewController", @"Tumblr")
+                                                        message:REActivityLocalizedStringFromTable(@"activity.Tumblr.authentication.error", @"REActivityViewController", @"Please check your e-mail and password. If you're sure they're correct, Tumblr may be temporarily experiencing problems. Please try again in a few minutes.")
                                                        delegate:nil
-                                              cancelButtonTitle:NSLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
+                                              cancelButtonTitle:REActivityLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
                                               otherButtonTitles:nil];
     [alertView show];
 }
@@ -155,7 +155,7 @@
         textToShare = [NSString stringWithFormat:@"%@ %@", text, url.absoluteString];
     
     REComposeViewController *controller = [[REComposeViewController alloc] init];
-    controller.title = NSLocalizedStringFromTable(@"activity.Tumblr.dialog.title", @"REActivityViewController", @"Tumblr");
+    controller.title = REActivityLocalizedStringFromTable(@"activity.Tumblr.dialog.title", @"REActivityViewController", @"Tumblr");
     controller.navigationBar.tintColor = [UIColor colorWithRed:56/255.0f green:86/255.0f blue:114/255.0f alpha:1.0];
     if (textToShare)
         controller.text = textToShare;

@@ -34,12 +34,12 @@
 {
 
     if (scene == WXSceneSession) {
-        self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.WeChat.title", @"REActivityViewController",  @"WeChat")
+        self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.WeChat.title", @"REActivityViewController",  @"WeChat")
                               image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Wechat"]
                         actionBlock:nil];
     }else
     {
-        self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.WeChatTimeline.title", @"REActivityViewController", @"WeChatTimeline")
+        self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.WeChatTimeline.title", @"REActivityViewController", @"WeChatTimeline")
                               image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Wechat_Timeline"]
                         actionBlock:nil];
     }

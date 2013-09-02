@@ -33,7 +33,7 @@
 
 - (id)init
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.Instapaper.title", @"REActivityViewController", @"Send to Instapaper")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Instapaper.title", @"REActivityViewController", @"Send to Instapaper")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Instapaper"]
                     actionBlock:nil];
     if (!self)
@@ -47,11 +47,11 @@
             [activityViewController dismissViewControllerAnimated:YES completion:^{
                 REAuthViewController *controller = [[REAuthViewController alloc] initWithStyle:UITableViewStyleGrouped];
                 UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-                controller.title = NSLocalizedStringFromTable(@"activity.Instapaper.authentication.title", @"REActivityViewController", @"Instapaper");
+                controller.title = REActivityLocalizedStringFromTable(@"activity.Instapaper.authentication.title", @"REActivityViewController", @"Instapaper");
                 controller.labels = @[
-                                      NSLocalizedStringFromTable(@"field.username", @"REActivityViewController", @"Username"),
-                                      NSLocalizedStringFromTable(@"field.password", @"REActivityViewController", @"Password"),
-                                      NSLocalizedStringFromTable(@"slogan.never.store.password", @"REActivityViewController", @"We never store your password.")
+                                      REActivityLocalizedStringFromTable(@"field.username", @"REActivityViewController", @"Username"),
+                                      REActivityLocalizedStringFromTable(@"field.password", @"REActivityViewController", @"Password"),
+                                      REActivityLocalizedStringFromTable(@"slogan.never.store.password", @"REActivityViewController", @"We never store your password.")
                                       ];
                 controller.onLoginButtonPressed = ^(REAuthViewController *controller, NSString *username, NSString *password) {
                     [weakSelf authenticateUsername:username password:password success:^{
@@ -63,9 +63,9 @@
                         [weakSelf saveURL:[userInfo objectForKey:@"url"] title:[userInfo objectForKey:@"text"]];
                     } error:^{
                         [controller showLoginButton];
-                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"activity.Instapaper.authentication.title", @"REActivityViewController", @"Instapaper")
-                                                                            message:NSLocalizedStringFromTable(@"activity.Instapaper.authentication.error", @"REActivityViewController", @"Please check your username and password. If you're sure they're correct, Instapaper may be temporarily experiencing problems. Please try again in a few minutes.")
-                                                                           delegate:nil cancelButtonTitle:NSLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss") otherButtonTitles:nil];
+                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:REActivityLocalizedStringFromTable(@"activity.Instapaper.authentication.title", @"REActivityViewController", @"Instapaper")
+                                                                            message:REActivityLocalizedStringFromTable(@"activity.Instapaper.authentication.error", @"REActivityViewController", @"Please check your username and password. If you're sure they're correct, Instapaper may be temporarily experiencing problems. Please try again in a few minutes.")
+                                                                           delegate:nil cancelButtonTitle:REActivityLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss") otherButtonTitles:nil];
                         [alertView show];
                     }];
                 };

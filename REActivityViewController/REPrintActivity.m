@@ -30,7 +30,7 @@
 
 - (id)init
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.Print.title", @"REActivityViewController", @"Print")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Print.title", @"REActivityViewController", @"Print")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Print"]
                     actionBlock:nil];
     
@@ -53,8 +53,8 @@
             void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) =
             ^(UIPrintInteractionController *printController, BOOL completed, NSError *error) {
                 if (!completed && error) {
-                    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"activity.Print.error.title", @"REActivityViewController", @"Error.")
-                                                                 message:[NSString stringWithFormat:NSLocalizedStringFromTable(@"activity.Print.error.message", @"REActivityViewController", @"An error occured while printing: %@"), error]
+                    UIAlertView *av = [[UIAlertView alloc] initWithTitle:REActivityLocalizedStringFromTable(@"activity.Print.error.title", @"REActivityViewController", @"Error.")
+                                                                 message:[NSString stringWithFormat:REActivityLocalizedStringFromTable(@"activity.Print.error.message", @"REActivityViewController", @"An error occured while printing: %@"), error]
                                                                 delegate:nil
                                                        cancelButtonTitle:@"OK"
                                                        otherButtonTitles:nil, nil];

@@ -31,7 +31,7 @@
 
 - (id)initWithConsumerKey:(NSString *)consumerKey
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.Pocket.title", @"REActivityViewController", @"Save to Pocket")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Pocket.title", @"REActivityViewController", @"Save to Pocket")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Pocket"]
                     actionBlock:nil];
     

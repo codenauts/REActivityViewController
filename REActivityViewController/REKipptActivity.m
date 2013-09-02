@@ -33,7 +33,7 @@
 
 - (id)init
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.Kippt.title", @"REActivityViewController", @"Save to Kippt")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Kippt.title", @"REActivityViewController", @"Save to Kippt")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Kippt"]
                     actionBlock:nil];
     
@@ -66,11 +66,11 @@
     [activityViewController dismissViewControllerAnimated:YES completion:^{
         REAuthViewController *controller = [[REAuthViewController alloc] initWithStyle:UITableViewStyleGrouped];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-        controller.title = NSLocalizedStringFromTable(@"activity.Kiipt.authentication.title", @"REActivityViewController", @"Kippt");
+        controller.title = REActivityLocalizedStringFromTable(@"activity.Kiipt.authentication.title", @"REActivityViewController", @"Kippt");
         controller.labels = @[
-                              NSLocalizedStringFromTable(@"field.username", @"REActivityViewController", @"Username"),
-                              NSLocalizedStringFromTable(@"field.password", @"REActivityViewController", @"Password"),
-                              NSLocalizedStringFromTable(@"slogan.password.storage.is.safe", @"REActivityViewController", @"We store your password in safe place.")
+                              REActivityLocalizedStringFromTable(@"field.username", @"REActivityViewController", @"Username"),
+                              REActivityLocalizedStringFromTable(@"field.password", @"REActivityViewController", @"Password"),
+                              REActivityLocalizedStringFromTable(@"slogan.password.storage.is.safe", @"REActivityViewController", @"We store your password in safe place.")
                               ];
         controller.onLoginButtonPressed = ^(REAuthViewController *controller, NSString *username, NSString *password) {
             [weakSelf postWithUsername:username password:password userInfo:userInfo success:^{
@@ -80,10 +80,10 @@
                 [[NSUserDefaults standardUserDefaults] synchronize];
             } failure:^(NSError *error) {
                 [controller showLoginButton];
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"activity.Kippt.authentication.title", @"REActivityViewController", @"Kippt")
-                                                                    message:NSLocalizedStringFromTable(@"activity.Kippt.authentication.error", @"REActivityViewController", @"Please check your username and password. If you're sure they're correct, Kippt may be temporarily experiencing problems. Please try again in a few minutes.")
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:REActivityLocalizedStringFromTable(@"activity.Kippt.authentication.title", @"REActivityViewController", @"Kippt")
+                                                                    message:REActivityLocalizedStringFromTable(@"activity.Kippt.authentication.error", @"REActivityViewController", @"Please check your username and password. If you're sure they're correct, Kippt may be temporarily experiencing problems. Please try again in a few minutes.")
                                                                    delegate:nil
-                                                          cancelButtonTitle:NSLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
+                                                          cancelButtonTitle:REActivityLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
                                                           otherButtonTitles:nil];
                 [alertView show];
             }];

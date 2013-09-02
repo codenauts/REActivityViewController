@@ -31,7 +31,7 @@
 
 - (id)init
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.Mail.title", @"REActivityViewController", @"Mail")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Mail.title", @"REActivityViewController", @"Mail")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Mail"]
                     actionBlock:nil];
     
@@ -87,8 +87,8 @@
                             
                             [mailComposeViewController addAttachmentData:attachmentData mimeType:attachmentMimeType fileName:attachmentFileName];
                         } else {
-                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"activity.Mail.error.title", @"REActivityViewController", @"Error.")
-                                                                                message:NSLocalizedStringFromTable(@"activity.Mail.error.message", @"REActivityViewController", error)
+                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:REActivityLocalizedStringFromTable(@"activity.Mail.error.title", @"REActivityViewController", @"Error.")
+                                                                                message:REActivityLocalizedStringFromTable(@"activity.Mail.error.message", @"REActivityViewController", error)
                                                                                delegate:nil
                                                                       cancelButtonTitle:@"OK"
                                                                       otherButtonTitles:nil, nil];

@@ -22,7 +22,7 @@
 
 - (id)initWithCallbackURL:(NSURL *)callbackURL
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.Chrome.title", @"REActivityViewController", @"Open in Chrome")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Chrome.title", @"REActivityViewController", @"Open in Chrome")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Chrome"]
                     actionBlock:nil];
     
@@ -33,13 +33,13 @@
         __typeof(&*self) __weak weakSelf = self;
         self.actionBlock = ^(REActivity *activity, REActivityViewController *activityViewController) {
             
-            NSString *title = NSLocalizedStringFromTable(@"activity.Chrome.dialog.appstore.title", @"REActivityViewController", @"Chrome in App Store");
-            NSString *message = NSLocalizedStringFromTable(@"activity.Chrome.dialog.appstore.message", @"REActivityViewController", @"Would you like to be taken to the App Store to install Google Chrome?");
+            NSString *title = REActivityLocalizedStringFromTable(@"activity.Chrome.dialog.appstore.title", @"REActivityViewController", @"Chrome in App Store");
+            NSString *message = REActivityLocalizedStringFromTable(@"activity.Chrome.dialog.appstore.message", @"REActivityViewController", @"Would you like to be taken to the App Store to install Google Chrome?");
             
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
                                                                 message:message
-                                                               delegate:weakSelf cancelButtonTitle:NSLocalizedStringFromTable(@"button.cancel", @"REActivityViewController", @"Cancel")
-                                                      otherButtonTitles:NSLocalizedStringFromTable(@"button.ok", @"REActivityViewController", @"OK"), nil];
+                                                               delegate:weakSelf cancelButtonTitle:REActivityLocalizedStringFromTable(@"button.cancel", @"REActivityViewController", @"Cancel")
+                                                      otherButtonTitles:REActivityLocalizedStringFromTable(@"button.ok", @"REActivityViewController", @"OK"), nil];
             [alertView show];
         };
     }

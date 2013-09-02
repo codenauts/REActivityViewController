@@ -1,5 +1,5 @@
 //
-// RESafariActivity.m
+// REActivityLocalization.h
 // REActivityViewController
 //
 // Copyright (c) 2013 Roman Efimov (https://github.com/romaonthego)
@@ -23,31 +23,5 @@
 // THE SOFTWARE.
 //
 
-#import "RESafariActivity.h"
-#import "REActivityViewController.h"
-
-@implementation RESafariActivity
-
-- (id)init
-{
-    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Safari.title", @"REActivityViewController", @"Open in Safari")
-                          image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Safari"]
-                    actionBlock:nil];
-    
-    if (!self)
-        return nil;
-    
-    __typeof(&*self) __weak weakSelf = self;
-    self.actionBlock = ^(REActivity *activity, REActivityViewController *activityViewController) {
-        [activityViewController dismissViewControllerAnimated:YES completion:nil];
-        
-        NSDictionary *userInfo = weakSelf.userInfo ? weakSelf.userInfo : activityViewController.userInfo;
-        
-        if ([[userInfo objectForKey:@"url"] isKindOfClass:[NSURL class]])
-            [[UIApplication sharedApplication] openURL:[userInfo objectForKey:@"url"]];
-    };
-    
-    return self;
-}
-
-@end
+NSBundle *REActivityBundle(void);
+NSString *REActivityLocalizedStringFromTable(NSString *key, NSString *table, NSString *comment);

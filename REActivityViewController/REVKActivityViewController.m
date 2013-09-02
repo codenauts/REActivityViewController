@@ -24,6 +24,7 @@
 //
 
 #import "REVKActivityViewController.h"
+#import "REActivityLocalization.h"
 #import "REAuthCell.h"
 
 @interface REVKActivityViewController ()
@@ -37,10 +38,10 @@
     self = [super init];
     if (self) {
         self.view.backgroundColor = [UIColor whiteColor];
-        self.title = NSLocalizedStringFromTable(@"activity.VKontakte.authentication.title", @"REActivityViewController", @"VKontakte");
+        self.title = REActivityLocalizedStringFromTable(@"activity.VKontakte.authentication.title", @"REActivityViewController", @"VKontakte");
         self.clientId = clientId;
         
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"button.cancel", @"REActivityViewController", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:REActivityLocalizedStringFromTable(@"button.cancel", @"REActivityViewController", @"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonPressed)];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://oauth.vk.com/authorize?client_id=%@&scope=wall,photos&redirect_uri=http://oauth.vk.com/blank.html&display=touch&response_type=token", _clientId]]];
         _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];

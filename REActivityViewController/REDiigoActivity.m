@@ -33,7 +33,7 @@
 
 - (id)initWithAPIKey:(NSString *)apiKey
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.Diigo.title", @"REActivityViewController", @"Save to Diigo")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Diigo.title", @"REActivityViewController", @"Save to Diigo")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Diigo"]
                     actionBlock:nil];
     
@@ -65,11 +65,11 @@
     [activityViewController dismissViewControllerAnimated:YES completion:^{
         REAuthViewController *controller = [[REAuthViewController alloc] initWithStyle:UITableViewStyleGrouped];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-        controller.title = NSLocalizedStringFromTable(@"activity.Diigo.authentication.title", @"REActivityViewController", @"Diigo");
+        controller.title = REActivityLocalizedStringFromTable(@"activity.Diigo.authentication.title", @"REActivityViewController", @"Diigo");
         controller.labels = @[
-                              NSLocalizedStringFromTable(@"field.username", @"REActivityViewController", @"Username"),
-                              NSLocalizedStringFromTable(@"field.password", @"REActivityViewController", @"Password"),
-                              NSLocalizedStringFromTable(@"slogan.password.storage.is.safe", @"REActivityViewController", @"We store your password in safe place.")
+                              REActivityLocalizedStringFromTable(@"field.username", @"REActivityViewController", @"Username"),
+                              REActivityLocalizedStringFromTable(@"field.password", @"REActivityViewController", @"Password"),
+                              REActivityLocalizedStringFromTable(@"slogan.password.storage.is.safe", @"REActivityViewController", @"We store your password in safe place.")
                               ];
         controller.onLoginButtonPressed = ^(REAuthViewController *controller, NSString *username, NSString *password) {
             [weakSelf authenticateWithUsername:username password:password success:^ {
@@ -81,10 +81,10 @@
                 }];
             } failure:^(NSError *error) {
                 [controller showLoginButton];
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"activity.Diigo.authentication.title", @"REActivityViewController", @"Diigo")
-                                                                    message:NSLocalizedStringFromTable(@"activity.Diigo.authentication.error", @"REActivityViewController", @"Please check your username and password. If you're sure they're correct, Diigo may be temporarily experiencing problems. Please try again in a few minutes.")
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:REActivityLocalizedStringFromTable(@"activity.Diigo.authentication.title", @"REActivityViewController", @"Diigo")
+                                                                    message:REActivityLocalizedStringFromTable(@"activity.Diigo.authentication.error", @"REActivityViewController", @"Please check your username and password. If you're sure they're correct, Diigo may be temporarily experiencing problems. Please try again in a few minutes.")
                                                                    delegate:nil
-                                                          cancelButtonTitle:NSLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
+                                                          cancelButtonTitle:REActivityLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
                                                           otherButtonTitles:nil];
                 [alertView show];
             }];
@@ -116,17 +116,17 @@
     NSURL *url = [userInfo objectForKey:@"url"];
     
     REComposeViewController *controller = [[REComposeViewController alloc] init];
-    controller.title = NSLocalizedStringFromTable(@"activity.Diigo.dialog.title", @"REActivityViewController", @"Diigo");
+    controller.title = REActivityLocalizedStringFromTable(@"activity.Diigo.dialog.title", @"REActivityViewController", @"Diigo");
     controller.navigationBar.tintColor = [UIColor colorWithRed:11/255.0f green:95/255.0f blue:160/255.0f alpha:1.0];
     controller.text = text;
     controller.hasAttachment = YES;
     controller.completionHandler = ^(REComposeViewController *composeViewController, REComposeResult result) {
         if (result == REComposeResultPosted) {
             if (!composeViewController.text || [composeViewController.text isEqualToString:@""]) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"activity.Diigo.error.title", @"REActivityViewController", @"Error.")
-                                                                message:NSLocalizedStringFromTable(@"activity.Diigo.error.text", @"REActivityViewController", @"Please enter title.")
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:REActivityLocalizedStringFromTable(@"activity.Diigo.error.title", @"REActivityViewController", @"Error.")
+                                                                message:REActivityLocalizedStringFromTable(@"activity.Diigo.error.text", @"REActivityViewController", @"Please enter title.")
                                                                delegate:nil
-                                                      cancelButtonTitle:NSLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
+                                                      cancelButtonTitle:REActivityLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
                                                       otherButtonTitles:nil];
                 [alert show];
             } else {
@@ -141,10 +141,10 @@
                      parameters:@{@"key": _apiKey, @"title": composeViewController.text, @"url": url.absoluteString}
                         success:nil
                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"activity.Diigo.authentication.title", @"REActivityViewController", @"Diigo")
-                                                                                message:NSLocalizedStringFromTable(@"activity.Diigo.authentication.error", @"REActivityViewController", @"Please check your username and password. If you're sure they're correct, Diigo may be temporarily experiencing problems. Please try again in a few minutes.")
+                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:REActivityLocalizedStringFromTable(@"activity.Diigo.authentication.title", @"REActivityViewController", @"Diigo")
+                                                                                message:REActivityLocalizedStringFromTable(@"activity.Diigo.authentication.error", @"REActivityViewController", @"Please check your username and password. If you're sure they're correct, Diigo may be temporarily experiencing problems. Please try again in a few minutes.")
                                                                                delegate:nil
-                                                                      cancelButtonTitle:NSLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
+                                                                      cancelButtonTitle:REActivityLocalizedStringFromTable(@"button.dismiss", @"REActivityViewController", @"Dismiss")
                                                                       otherButtonTitles:nil];
                             [alertView show];
                             

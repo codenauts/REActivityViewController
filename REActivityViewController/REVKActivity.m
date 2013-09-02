@@ -32,7 +32,7 @@
 
 - (id)initWithClientId:(NSString *)clientId
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.VKontakte.title", @"REActivityViewController", @"VKontakte")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.VKontakte.title", @"REActivityViewController", @"VKontakte")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_VK"]
                     actionBlock:nil];
     if (!self)
@@ -83,7 +83,7 @@
         textToShare = [NSString stringWithFormat:@"%@ %@", text, url.absoluteString];
     
     REComposeViewController *controller = [[REComposeViewController alloc] init];
-    controller.title = NSLocalizedStringFromTable(@"activity.VKontakte.dialog.title", @"REActivityViewController", @"VKontakte");
+    controller.title = REActivityLocalizedStringFromTable(@"activity.VKontakte.dialog.title", @"REActivityViewController", @"VKontakte");
     controller.navigationBar.tintColor = [UIColor colorWithRed:56/255.0f green:99/255.0f blue:150/255.0f alpha:1.0];
     if (textToShare)
         controller.text = textToShare;

@@ -31,7 +31,7 @@
 
 - (id)init
 {
-    self = [super initWithTitle:NSLocalizedStringFromTable(@"activity.Facebook.title", @"REActivityViewController", @"Facebook")
+    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Facebook.title", @"REActivityViewController", @"Facebook")
                           image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Facebook"]
                     actionBlock:nil];
     if (!self)

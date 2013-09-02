@@ -1,5 +1,5 @@
 //
-// RESafariActivity.m
+// REActivityLocalization.m
 // REActivityViewController
 //
 // Copyright (c) 2013 Roman Efimov (https://github.com/romaonthego)
@@ -23,31 +23,22 @@
 // THE SOFTWARE.
 //
 
-#import "RESafariActivity.h"
-#import "REActivityViewController.h"
-
-@implementation RESafariActivity
-
-- (id)init
-{
-    self = [super initWithTitle:REActivityLocalizedStringFromTable(@"activity.Safari.title", @"REActivityViewController", @"Open in Safari")
-                          image:[UIImage imageNamed:@"REActivityViewController.bundle/Icon_Safari"]
-                    actionBlock:nil];
-    
-    if (!self)
-        return nil;
-    
-    __typeof(&*self) __weak weakSelf = self;
-    self.actionBlock = ^(REActivity *activity, REActivityViewController *activityViewController) {
-        [activityViewController dismissViewControllerAnimated:YES completion:nil];
-        
-        NSDictionary *userInfo = weakSelf.userInfo ? weakSelf.userInfo : activityViewController.userInfo;
-        
-        if ([[userInfo objectForKey:@"url"] isKindOfClass:[NSURL class]])
-            [[UIApplication sharedApplication] openURL:[userInfo objectForKey:@"url"]];
-    };
-    
-    return self;
+// Load the framework bundle.
+NSBundle *REActivityBundle(void) {
+  static NSBundle *bundle = nil;
+  static dispatch_once_t predicate;
+  dispatch_once(&predicate, ^{
+    NSString* mainBundlePath = [[NSBundle mainBundle] resourcePath];
+    NSString* frameworkBundlePath = [mainBundlePath stringByAppendingPathComponent:@"REActivityViewController.bundle"];
+    bundle = [NSBundle bundleWithPath:frameworkBundlePath];
+  });
+  return bundle;
 }
 
-@end
+NSString *REActivityLocalizedStringFromTable(NSString *key, NSString *table, NSString *comment) {
+  if (REActivityBundle()) {
+    return NSLocalizedStringFromTableInBundle(key, table, REActivityBundle(), comment);
+  } else {
+    return key;
+  }
+}
